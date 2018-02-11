@@ -1824,7 +1824,6 @@
 		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
 		border-bottom: dotted 1px;
-		color: #4eb980;
 		text-decoration: none;
 	}
 
@@ -2085,25 +2084,45 @@
 		position: relative;
 	}
 
-		.image:after {
-			-moz-transition: opacity 0.25s ease-in-out;
-			-webkit-transition: opacity 0.25s ease-in-out;
-			-ms-transition: opacity 0.25s ease-in-out;
-			transition: opacity 0.25s ease-in-out;
-			background-image: url("images/overlay.png");
-			content: '';
-			display: block;
-			height: 100%;
-			left: 0;
-			opacity: 0.2;
-			position: absolute;
-			top: 0;
-			width: 100%;
-		}
-
 		.image img {
 			display: block;
-		}
+    }
+    
+    .image span {
+      visibility: hidden;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      -moz-transition: visibility 0s, opacity 0.5s linear;
+      -webkit-transition: visibility 0s, opacity 0.5s linear;
+      -ms-transition: visibility 0s, opacity 0.5s linear;
+      transition: visibility 0s, opacity 0.5s linear;
+    }
+
+    .image span i {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .image:hover span {
+      visibility: visible;
+      opacity: 1;
+      display: block;
+      background-color: rgba(254,155,54,0.6);
+    }
+
+    .image span a {
+  	  color: rgba(255, 255, 255, 0.8);
+    }
+
+    .image span a:hover {
+  	  color: rgba(255, 255, 255, 1);
+    }
 
 		.image.fit {
 			display: block;
@@ -2123,67 +2142,6 @@
 				display: block;
 				width: 100%;
 			}
-
-		.image.icon {
-			-moz-perspective: 500px;
-			-webkit-perspective: 500px;
-			-ms-perspective: 500px;
-			perspective: 500px;
-		}
-
-			.image.icon:before {
-				-moz-transition: -moz-transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
-				-webkit-transition: -webkit-transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
-				-ms-transition: -ms-transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
-				transition: transform 0.1s ease-in-out, font-size 0.1s ease-in-out;
-				color: #fff;
-				font-size: 6em;
-				height: 1em;
-				left: 50%;
-				line-height: 1em;
-				margin: -0.5em 0 0 -0.5em;
-				position: absolute;
-				text-align: center;
-				top: 50%;
-				width: 1em;
-				z-index: 1;
-			}
-
-			.image.icon:hover:before {
-				-moz-transform: translateZ(1em);
-				-webkit-transform: translateZ(1em);
-				-ms-transform: translateZ(1em);
-				transform: translateZ(1em);
-			}
-
-			.image.icon:hover:after {
-				opacity: 1;
-			}
-
-	span.image.icon {
-		cursor: default;
-	}
-
-/* Icon */
-
-	.icon {
-		text-decoration: none;
-		border-bottom: none;
-		position: relative;
-	}
-
-		.icon:before {
-			-moz-osx-font-smoothing: grayscale;
-			-webkit-font-smoothing: antialiased;
-			font-family: FontAwesome;
-			font-style: normal;
-			font-weight: normal;
-			text-transform: none !important;
-		}
-
-		.icon > .label {
-			display: none;
-		}
 
 /* List */
 
@@ -2431,9 +2389,8 @@
 
 			.feature .image img {
 				display: block;
-				min-height: 100%;
-				min-width: 100%;
-				position: absolute;
+				width: 100%;
+        height: 100%;
 			}
 
 		.feature:before {
@@ -2472,11 +2429,6 @@
 				float: left;
 			}
 
-				.feature.left .image img {
-					right: 0;
-					top: 0;
-				}
-
 			.feature.left .content {
 				padding-right: 0;
 			}
@@ -2488,11 +2440,6 @@
 			.feature.right .image {
 				float: right;
 			}
-
-				.feature.right .image img {
-					left: 0;
-					top: 0;
-				}
 
 			.feature.right .content {
 				padding-left: 0;
