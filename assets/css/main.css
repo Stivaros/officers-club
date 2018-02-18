@@ -1971,7 +1971,10 @@
 			margin-top: 6em;
 			padding: 4em 0;
 			position: relative;
-		}
+    }
+
+      .listen-link { color: #FE9B36 }
+      .listen-link:hover { color: #000 }
 
 			footer.major:before, footer.major:after {
 				background: rgba(224, 224, 224, 0.75);
